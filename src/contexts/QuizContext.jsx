@@ -8,6 +8,7 @@ const initialState = {
   index: 0,
   answer: null,
   points: 0,
+  highscore: 0, 
   secondsRemaining: null,   
 };
 
@@ -49,11 +50,16 @@ case "nextQuestion":
     answer: null,
   };
   case "finish":
-      return {
-        ...state,
-        status: "finished",
-      };
-      case "tick":
+  return {
+    ...state,
+    status: "finished",
+    highscore:
+      state.points > state.highscore
+        ? state.points
+        : state.highscore,
+  };
+
+  case "tick":
   return {
     ...state,
     secondsRemaining: state.secondsRemaining - 1,
@@ -61,6 +67,13 @@ case "nextQuestion":
       state.secondsRemaining === 1
         ? "finished"
         : state.status,
+  };
+   case "restart":
+  return {
+    ...initialState,
+    questions: state.questions,
+    status: "ready",
+    highscore: state.highscore,
   };
 
 
