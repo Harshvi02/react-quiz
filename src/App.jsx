@@ -7,6 +7,7 @@ import Question from "./components/Question.jsx";
 import NextButton from "./components/NextButton.jsx";
 import FinishScreen from "./components/FinishScreen.jsx";
 import Progress from "./components/Progress.jsx";
+import Footer from "./components/Footer.jsx";
 
 
 function App() {
@@ -23,7 +24,10 @@ function App() {
     <>
       <Progress />
       <Question />
+      <Footer>
        <NextButton />
+       </Footer>
+
     </>
   )}
   {state.status === "finished" && <FinishScreen />}
