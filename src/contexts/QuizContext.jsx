@@ -11,22 +11,39 @@ const initialState = {
 };
 function reducer(state, action) {
   switch (action.type) {
+
     case "dataReceived":
       return {
         ...state,
         questions: action.payload,
         status: "ready",
       };
-  case "start":
+
+    case "start":
+      return {
+        ...state,
+        status: "active",
+      };
+
+   case "newAnswer": {
+  const question = state.questions[state.index];
+
   return {
     ...state,
-    status: "active",
+    answer: action.payload,
+    points:
+      action.payload === question.correctOption
+        ? state.points + question.points
+        : state.points,
   };
-   
+}
+
+
     default:
       return state;
   }
 }
+
 
 function QuizProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);

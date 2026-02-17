@@ -1,7 +1,15 @@
+import Options from "./Options.jsx";
+import { useQuiz } from "../contexts/useQuiz.js";
+
 function Question() {
+  const { state } = useQuiz();
+const question = state.questions[state.index];
+
   return (
     <div>
-      <h4>Here will be the question text</h4>
+     <h4>{question.question}</h4>
+     
+     <Options question={question} />
     </div>
   );
 }

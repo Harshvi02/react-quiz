@@ -3,6 +3,7 @@ import Main from "./components/Main";
 import StartScreen from "./components/StartScreen";
 import { useQuiz } from "./contexts/useQuiz.js";
 import Loader from "./components/Loader.jsx";
+import Question from "./components/Question.jsx";
 
 function App() {
   const { state } = useQuiz();
@@ -13,6 +14,7 @@ function App() {
  <Main>
   {state.status === "loading" && <Loader />}
   {state.status === "ready" && <StartScreen />}
+   {state.status === "active" && <Question />}
 </Main>
 
  </div>
