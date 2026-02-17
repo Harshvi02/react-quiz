@@ -8,7 +8,9 @@ const initialState = {
   index: 0,
   answer: null,
   points: 0,
+  secondsRemaining: null,   
 };
+
 function reducer(state, action) {
   switch (action.type) {
 
@@ -20,10 +22,12 @@ function reducer(state, action) {
       };
 
     case "start":
-      return {
-        ...state,
-        status: "active",
-      };
+  return {
+    ...state,
+    status: "active",
+    secondsRemaining: state.questions.length * 30,
+  };
+
 
    case "newAnswer": {
   const question = state.questions[state.index];
@@ -49,6 +53,12 @@ case "nextQuestion":
         ...state,
         status: "finished",
       };
+      case "tick":
+  return {
+    ...state,
+    secondsRemaining: state.secondsRemaining - 1,
+  };
+
     default:
       return state;
   }

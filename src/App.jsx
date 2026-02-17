@@ -8,6 +8,7 @@ import NextButton from "./components/NextButton.jsx";
 import FinishScreen from "./components/FinishScreen.jsx";
 import Progress from "./components/Progress.jsx";
 import Footer from "./components/Footer.jsx";
+import Timer from "./components/Timer.jsx";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <Progress />
       <Question />
       <Footer>
+        <Timer />
        <NextButton />
        </Footer>
 
