@@ -4,8 +4,11 @@ import { useEffect } from "react";
 function Timer() {
   const { state, dispatch } = useQuiz();
 
-  const mins = Math.floor(state.secondsRemaining / 60);
-  const seconds = state.secondsRemaining % 60;
+  const totalSeconds = Math.max(0, state.secondsRemaining);
+
+  const mins = Math.floor(totalSeconds / 60);
+  const seconds = totalSeconds % 60;
+
 
   useEffect(() => {
     const id = setInterval(() => {

@@ -57,7 +57,12 @@ case "nextQuestion":
   return {
     ...state,
     secondsRemaining: state.secondsRemaining - 1,
+    status:
+      state.secondsRemaining === 1
+        ? "finished"
+        : state.status,
   };
+
 
     default:
       return state;
