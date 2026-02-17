@@ -1,17 +1,19 @@
+import { useQuiz } from "../contexts/useQuiz.js";
+
 function FinishScreen() {
+  const { state } = useQuiz();
+
   return (
     <>
       <p className="result">
-        <span>🎉</span>
-        You scored <strong>0</strong> out of 280 (0%)
+        You scored <strong>{state.points}</strong> points
       </p>
 
-      <p className="highscore">
-        (Highscore: 0 points)
-      </p>
-
-      <button className="btn btn-ui">
-        Restart quiz
+      <button
+        className="btn btn-ui"
+        onClick={() => window.location.reload()}
+      >
+        Restart Quiz
       </button>
     </>
   );

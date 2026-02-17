@@ -4,6 +4,9 @@ import StartScreen from "./components/StartScreen";
 import { useQuiz } from "./contexts/useQuiz.js";
 import Loader from "./components/Loader.jsx";
 import Question from "./components/Question.jsx";
+import NextButton from "./components/NextButton.jsx";
+import FinishScreen from "./components/FinishScreen.jsx";
+
 
 function App() {
   const { state } = useQuiz();
@@ -14,8 +17,17 @@ function App() {
  <Main>
   {state.status === "loading" && <Loader />}
   {state.status === "ready" && <StartScreen />}
-   {state.status === "active" && <Question />}
+
+  {state.status === "active" && (
+    <>
+      <Question />
+       <NextButton />
+    </>
+  )}
+  {state.status === "finished" && <FinishScreen />}
+
 </Main>
+
 
  </div>
   );
