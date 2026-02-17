@@ -1,15 +1,29 @@
+import { useQuiz } from "../contexts/useQuiz.js";
+
 function Progress() {
+  const { state } = useQuiz();
+
+  const numQuestions = state.questions.length;
+
+  const maxPoints = state.questions.reduce(
+    (total, question) => total + question.points,
+    0
+  );
+
   return (
     <header className="progress">
 
-      <progress max="15" value="0"></progress>
+      <progress
+        max={numQuestions}
+        value={state.index + Number(state.answer !== null)}
+      />
 
       <p>
-        Question <strong>1</strong> / 15
+        Question <strong>{state.index + 1}</strong> / {numQuestions}
       </p>
 
       <p>
-        <strong>0</strong> / 280
+        <strong>{state.points}</strong> / {maxPoints}
       </p>
 
     </header>

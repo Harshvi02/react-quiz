@@ -6,6 +6,7 @@ import Loader from "./components/Loader.jsx";
 import Question from "./components/Question.jsx";
 import NextButton from "./components/NextButton.jsx";
 import FinishScreen from "./components/FinishScreen.jsx";
+import Progress from "./components/Progress.jsx";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 
   {state.status === "active" && (
     <>
+      <Progress />
       <Question />
        <NextButton />
     </>
