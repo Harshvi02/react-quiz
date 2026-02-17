@@ -17,7 +17,12 @@ function reducer(state, action) {
         questions: action.payload,
         status: "ready",
       };
-
+  case "start":
+  return {
+    ...state,
+    status: "active",
+  };
+   
     default:
       return state;
   }
@@ -25,6 +30,8 @@ function reducer(state, action) {
 
 function QuizProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  
  useEffect(function () {
     fetch("http://localhost:9000/questions")
       .then((res) => res.json())
@@ -40,3 +47,5 @@ function QuizProvider({ children }) {
 }
 
 export { QuizProvider, QuizContext };
+
+
