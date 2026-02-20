@@ -89,12 +89,12 @@ function QuizProvider({ children }) {
 
   
  useEffect(function () {
-    fetch("http://localhost:9000/questions")
-      .then((res) => res.json())
-      .then((data) =>
-        dispatch({ type: "dataReceived", payload: data })
-      );
-  }, []);
+  fetch("http://localhost:8000/questions")
+    .then((res) => res.json())
+    .then((data) =>
+      dispatch({ type: "dataReceived", payload: data })
+    );
+}, []);
   return (
     <QuizContext.Provider value={{ state, dispatch }}>
       {children}
